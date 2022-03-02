@@ -1,7 +1,5 @@
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MarsRoverKataTest {
@@ -20,12 +18,15 @@ public class MarsRoverKataTest {
     public void wrongStartPoint(){
         MarsRoverKata MRK = new MarsRoverKata();
 
-
         NumberFormatException exeption = assertThrows(NumberFormatException.class, () ->{
             MRK.startPosition(-1,2,'N');
         });
-
         Assert.assertEquals("Not accepted value", exeption.getMessage());
+
+        NumberFormatException exeption2 = assertThrows(NumberFormatException.class, () ->{
+            MRK.startPosition(1,2,'U');
+        });
+        Assert.assertEquals("Not accepted value", exeption2.getMessage());
     }
 
     @Test

@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Optional;
-
 public class MarsRoverKata {
 
     private int x;
@@ -15,7 +12,6 @@ public class MarsRoverKata {
         }else{
             throw new NumberFormatException("Not accepted value");
         }
-
     }
 
     public String moveRover(String commands){
@@ -35,10 +31,8 @@ public class MarsRoverKata {
                     rotate(true);
                     break;
                 default:
-
             }
         }
-
         return commands;
     }
 
@@ -49,6 +43,7 @@ public class MarsRoverKata {
         }else{
             move = -1;
         }
+
         switch (direction){
             case 'N':
                 if(getY() == 5){
@@ -87,8 +82,9 @@ public class MarsRoverKata {
                 }
                 break;
             default:
-
         }
+
+        //ta bort if/else grejer - sätt till check och kolla om nått är 0/6 -> sätts till 5/1
     }
 
     public void rotate(boolean right){
@@ -104,7 +100,6 @@ public class MarsRoverKata {
             indexNow++;
         }
 
-
         if (right){
             if(index == 3){
                 index = -1;
@@ -116,7 +111,6 @@ public class MarsRoverKata {
             }
             setDirection(direct[index-1].charAt(0));
         }
-
     }
 
     public int getX() {
