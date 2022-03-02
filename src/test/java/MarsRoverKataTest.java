@@ -37,6 +37,20 @@ public class MarsRoverKataTest {
         Assert.assertEquals(1,MRK2.getY());
     }
 
-    
+    @Test
+    public void rotate(){
+        MarsRoverKata MRK = new MarsRoverKata();
+        MRK.startPosition(1,2,'N');
+        MRK.moveRover("L,R,R");
+
+        Assert.assertEquals('E',MRK.getDirection());
+
+        MarsRoverKata MRK2 = new MarsRoverKata();
+        MRK2.startPosition(1,2,'S');
+        MRK2.moveRover("R,R,R");
+
+        Assert.assertEquals('E',MRK2.getDirection());
+
+    }
 
 }

@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Optional;
+
 public class MarsRoverKata {
 
     private int x;
@@ -19,6 +22,12 @@ public class MarsRoverKata {
                     break;
                 case "B":
                     moveFrontBack(false);
+                    break;
+                case "L":
+                    rotate(false);
+                    break;
+                case "R":
+                    rotate(true);
                     break;
                 default:
                     //throw error eller nått
@@ -51,6 +60,34 @@ public class MarsRoverKata {
             default:
                 //throw error eller nått
         }
+    }
+
+    public void rotate(boolean right){
+        String[] direct = {"W", "N", "E", "S"};
+        int index = 0;
+
+        int indexNow = 0;
+        for (String s: direct) {
+            if(s.equals(String.valueOf(direction))){
+                index =indexNow;
+                break;
+            }
+            indexNow++;
+        }
+
+
+        if (right){
+            if(index == 3){
+                index = -1;
+            }
+            setDirection(direct[index+1].charAt(0));
+        }else{
+            if(index == 0){
+                index = 4;
+            }
+            setDirection(direct[index-1].charAt(0));
+        }
+
     }
 
     public int getX() {
