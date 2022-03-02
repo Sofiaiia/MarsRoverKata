@@ -22,4 +22,21 @@ public class MarsRoverKataTest {
         Assert.assertEquals("L,B,R,F,L,F,R", MRK.moveRover("L,B,R,F,L,F,R"));
     }
 
+    @Test
+    public void moveForwardBackwards(){
+        MarsRoverKata MRK = new MarsRoverKata();
+        MRK.startPosition(1,2,'N');
+        MRK.moveRover("F,B,F,F,B");
+
+        Assert.assertEquals(3,MRK.getY());
+
+        MarsRoverKata MRK2 = new MarsRoverKata();
+        MRK2.startPosition(1,2,'S');
+        MRK2.moveRover("F,B,F,F,B");
+
+        Assert.assertEquals(1,MRK2.getY());
+    }
+
+    
+
 }
