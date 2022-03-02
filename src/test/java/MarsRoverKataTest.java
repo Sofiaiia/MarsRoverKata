@@ -2,6 +2,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class MarsRoverKataTest {
 
     @Test
@@ -12,6 +14,18 @@ public class MarsRoverKataTest {
         Assert.assertEquals(1, MRK.getX());
         Assert.assertEquals(2, MRK.getY());
         Assert.assertEquals('N', MRK.getDirection());
+    }
+
+    @Test
+    public void wrongStartPoint(){
+        MarsRoverKata MRK = new MarsRoverKata();
+
+
+        NumberFormatException exeption = assertThrows(NumberFormatException.class, () ->{
+            MRK.startPosition(-1,2,'N');
+        });
+
+        Assert.assertEquals("Not accepted value", exeption.getMessage());
     }
 
     @Test
@@ -50,6 +64,26 @@ public class MarsRoverKataTest {
         MRK2.moveRover("R,R,R");
 
         Assert.assertEquals('E',MRK2.getDirection());
+
+    }
+
+    @Test
+    public void wrapping(){
+        MarsRoverKata MRK = new MarsRoverKata();
+        MRK.startPosition(1,2,'N');
+        MRK.moveRover("F,F,F,F");
+
+        Assert.assertEquals(1,MRK.getY());
+
+    }
+
+    @Test
+    public void testOtherCommand(){
+        MarsRoverKata MRK = new MarsRoverKata();
+        MRK.startPosition(1,2,'N');
+        MRK.moveRover("F,hokus pokus,B");
+
+        Assert.assertEquals(2,MRK.getY());
 
     }
 

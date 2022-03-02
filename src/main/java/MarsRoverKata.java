@@ -8,9 +8,14 @@ public class MarsRoverKata {
     private char direction;
 
     public void startPosition(int x, int y, char direction){
-        setX(x);
-        setY(y);
-        setDirection(direction);
+        if(x > 0 && y > 0 && (direction == 'N' || direction == 'S' || direction == 'W' || direction == 'E')){
+            setX(x);
+            setY(y);
+            setDirection(direction);
+        }else{
+            throw new NumberFormatException("Not accepted value");
+        }
+
     }
 
     public String moveRover(String commands){
@@ -30,7 +35,7 @@ public class MarsRoverKata {
                     rotate(true);
                     break;
                 default:
-                    //throw error eller nått
+
             }
         }
 
@@ -46,19 +51,43 @@ public class MarsRoverKata {
         }
         switch (direction){
             case 'N':
-                setY(getY() + move);
+                if(getY() == 5){
+                    setY(1);
+                }else if(getY() == 1){
+                    setY(5);
+                }else{
+                    setY(getY() + move);
+                }
                 break;
             case 'S':
-                setY(getY() - move);
+                if(getY() == 1){
+                    setY(5);
+                }else if(getY() ==5){
+                    setY(1);
+                }else{
+                    setY(getY() - move);
+                }
                 break;
             case 'W':
-                setX(getX() - move);
+                if(getX() == 1){
+                    setX(5);
+                }else if(getX() == 5){
+                    setX(1);
+                }else{
+                    setX(getX() - move);
+                }
                 break;
             case 'E':
-                setX(getX() + move);
+                if(getX() == 5){
+                    setX(1);
+                }else if(getX() == 1){
+                    setX(5);
+                }else{
+                    setX(getX() + move);
+                }
                 break;
             default:
-                //throw error eller nått
+
         }
     }
 
