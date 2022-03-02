@@ -10,6 +10,12 @@ public class MarsRoverKata {
         setDirection(direction);
     }
 
+    public String moveRover(String commands){
+        String[] arr = commands.split(",");
+
+        return commands;
+    }
+
     public int getX() {
         return x;
     }
