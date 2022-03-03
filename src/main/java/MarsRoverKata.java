@@ -18,8 +18,7 @@ public class MarsRoverKata {
         String[] arr = commands.split(",");
         for (String move: arr) {
             switch (move){
-                case "F":
-                    moveFrontBack(true);
+                case "F": moveFrontBack(true);
                     break;
                 case "B":
                     moveFrontBack(false);
@@ -46,45 +45,31 @@ public class MarsRoverKata {
 
         switch (direction){
             case 'N':
-                if(getY() == 5){
-                    setY(1);
-                }else if(getY() == 1){
-                    setY(5);
-                }else{
-                    setY(getY() + move);
-                }
+                setY(getY() + move);
                 break;
             case 'S':
-                if(getY() == 1){
-                    setY(5);
-                }else if(getY() ==5){
-                    setY(1);
-                }else{
-                    setY(getY() - move);
-                }
+                setY(getY() - move);
                 break;
             case 'W':
-                if(getX() == 1){
-                    setX(5);
-                }else if(getX() == 5){
-                    setX(1);
-                }else{
-                    setX(getX() - move);
-                }
+                setX(getX() - move);
                 break;
             case 'E':
-                if(getX() == 5){
-                    setX(1);
-                }else if(getX() == 1){
-                    setX(5);
-                }else{
-                    setX(getX() + move);
-                }
+                setX(getX() + move);
                 break;
-            default:
+            default: break;
         }
 
-        //ta bort if/else grejer - sätt till check och kolla om nått är 0/6 -> sätts till 5/1
+        if(getX() == 6){
+            setX(1);
+        }else if(getX() == 0){
+            setX(5);
+        }
+
+        if(getY() == 6){
+            setY(1);
+        }else if(getY() == 0){
+            setY(5);
+        }
     }
 
     public void rotate(boolean right){
